@@ -12,8 +12,13 @@ public class Gun : MonoBehaviour
     [Header("Metak:")]
     public Rigidbody bullet;
     public Transform bulletSpawnPoint;
-    AudioSource zvukPucanja;
     Bullet bulletScript;
+    [Header("Audio:")]
+    AudioSource zvukPucanja;
+    public AudioClip shootSound;
+    public AudioClip MagazineExit;
+    public AudioClip MagazineEnter;
+    public AudioClip CockSound;
     [Header("O puški:")]
     public float Recoil;
     public float reloadTime;
@@ -54,23 +59,26 @@ public class Gun : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         fireRate -= Time.deltaTime;
         reloadTime -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0)
         {
+            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
         else if (Input.GetMouseButton(0) && vrstaPucanja == 1 && currentAmmo > 0 && fireRate <= 0)
         {
+            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
         //Burst fire
         else if (Input.GetMouseButtonDown(0) && vrstaPucanja == 2 && currentAmmo > 0 && fireRate <= 0)
         {
+            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
@@ -81,16 +89,16 @@ public class Gun : MonoBehaviour
             currentAmmo = maxAmmo;
             ammo.text = currentAmmo + "/" + maxAmmo; 
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButton(1))
         {
             aimScope.gameObject.SetActive(true);
-            GameObject FPScamera = GameObject.FindGameObjectWithTag("MainCamera");
+            GameObject FPScamera = GameObject.Find("FirstPersonCharacter");
             FPScamera.GetComponent<Camera>().enabled = false;
             FPScamera.GetComponent<AudioListener>().enabled = false;
         }else if (Input.GetMouseButtonUp(1))
         {
             aimScope.gameObject.SetActive(false);
-            GameObject FPScamera = GameObject.FindGameObjectWithTag("MainCamera");
+            GameObject FPScamera = GameObject.Find("FirstPersonCharacter");
             FPScamera.GetComponent<Camera>().enabled = true;
             FPScamera.GetComponent<AudioListener>().enabled = true;
         }
@@ -107,35 +115,53 @@ public class Gun : MonoBehaviour
 
 
         Rigidbody cloneBullet;
-        if (vrstaPucanja == 0)
+        switch (vrstaPucanja)
         {
-            currentAmmo--;
-            ammo.text = currentAmmo + "/" + maxAmmo;
-            zvukPucanja.Play();
-            cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            cloneBullet.velocity = bulletScript.speed * ray.direction;
-        }
-        if (vrstaPucanja == 1)
-        {
-            currentAmmo--;
-            ammo.text = currentAmmo + "/" + maxAmmo;
-            zvukPucanja.Play();
-            cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            cloneBullet.velocity = bulletScript.speed * ray.direction;
-        }
-        if(vrstaPucanja == 2)
-        {
-            currentAmmo -= 3;
-            ammo.text = currentAmmo + "/" + maxAmmo;
-            zvukPucanja.Play();
-            for (int i = 0; i < 3; i++)
-            {
+            case 2:
+                currentAmmo--;
+                ammo.text = currentAmmo + "/" + maxAmmo;
+                for (int i = 0; i < 3; i++)
+                {
+                    cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                    cloneBullet.velocity = bulletScript.speed * ray.direction;
+                }
+                break;
+            case 1:
+                currentAmmo--;
+                ammo.text = currentAmmo + "/" + maxAmmo;
                 cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 cloneBullet.velocity = bulletScript.speed * ray.direction;
-            }
-        }
-        MyAnim.SetTrigger("Fire");
+                break;
+            default:
+                currentAmmo--;
+                ammo.text = currentAmmo + "/" + maxAmmo;
+                cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                cloneBullet.velocity = bulletScript.speed * ray.direction;
+                break;
 
+        }
+        zvukPucanja.clip = shootSound;
+        zvukPucanja.Play();
+        
+
+    }
+
+    void MagazineEnterSound()
+    {
+        zvukPucanja.clip = MagazineEnter;
+        zvukPucanja.Play();
+    }
+
+    void MagazineExitSound()
+    {
+        zvukPucanja.clip = MagazineExit;
+        zvukPucanja.Play();
+    }
+    
+    void CockGun()
+    {
+        zvukPucanja.clip = CockSound;
+        zvukPucanja.Play();
     }
 
 }
