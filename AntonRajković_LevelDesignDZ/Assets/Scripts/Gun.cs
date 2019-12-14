@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     [Header("Metak:")]
     public Rigidbody bullet;
     public Transform bulletSpawnPoint;
+    public float BulletDamage;
     Bullet bulletScript;
     [Header("Audio:")]
     AudioSource zvukPucanja;
@@ -39,7 +40,6 @@ public class Gun : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         aimScope.gameObject.SetActive(false);
-        ammo.text = currentAmmo + "/" + maxAmmo;
         zvukPucanja = GetComponent<AudioSource>();
         MyAnim = GetComponent<Animator>();
         fireRate = fireRateStart;
@@ -61,6 +61,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        ammo.text = currentAmmo + "/" + maxAmmo;
         fireRate -= Time.deltaTime;
         reloadTime -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0)
@@ -119,24 +120,24 @@ public class Gun : MonoBehaviour
         {
             case 2:
                 currentAmmo--;
-                ammo.text = currentAmmo + "/" + maxAmmo;
                 for (int i = 0; i < 3; i++)
                 {
                     cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                     cloneBullet.velocity = bulletScript.speed * ray.direction;
+                    bulletScript.damage = BulletDamage;
                 }
                 break;
             case 1:
                 currentAmmo--;
-                ammo.text = currentAmmo + "/" + maxAmmo;
                 cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 cloneBullet.velocity = bulletScript.speed * ray.direction;
+                bulletScript.damage = BulletDamage;
                 break;
             default:
                 currentAmmo--;
-                ammo.text = currentAmmo + "/" + maxAmmo;
                 cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 cloneBullet.velocity = bulletScript.speed * ray.direction;
+                bulletScript.damage = BulletDamage;
                 break;
 
         }
