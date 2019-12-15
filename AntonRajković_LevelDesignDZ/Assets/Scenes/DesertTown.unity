@@ -5267,6 +5267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   health_Current: 0
+  MyAudioSource: {fileID: 0}
+  HurtSounds: []
   HealthSlider: {fileID: 549771022}
 --- !u!1001 &801707068
 PrefabInstance:

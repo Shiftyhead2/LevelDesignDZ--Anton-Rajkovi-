@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public float health;
     float health_Start;
     public float health_Current;
+    public AudioSource MyAudioSource;
+    public AudioClip[] HurtSounds;
 
     public Slider HealthSlider;
 
@@ -48,5 +50,10 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health_Current -= damage;
+        if (MyAudioSource != null)
+        {
+            MyAudioSource.clip = HurtSounds[Random.Range(0, HurtSounds.Length)];
+            MyAudioSource.Play();
+        }
     }
 }

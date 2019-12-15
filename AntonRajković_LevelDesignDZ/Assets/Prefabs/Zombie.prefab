@@ -1037,6 +1037,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   health_Current: 0
+  MyAudioSource: {fileID: 5589162940105219151}
+  HurtSounds:
+  - {fileID: 8300000, guid: bdb798b20d5ac2f438f3a562f4150019, type: 3}
+  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
+  - {fileID: 8300000, guid: a4366158371c9514cae30cfff454dcb2, type: 3}
+  - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
+  - {fileID: 8300000, guid: 5cd921b91deac4f47b05c451951f7a53, type: 3}
   HealthSlider: {fileID: 1724427137699532046}
 --- !u!82 &5589162940105219151
 AudioSource:
