@@ -8,10 +8,20 @@ public class Bullet : MonoBehaviour
     Rigidbody RB;
     public float speed;
     public float damage;
+    float DestroyTime = 30f;
 
     private void Start()
     {
         RB = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        DestroyTime -= Time.deltaTime;
+        if(DestroyTime <= 0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +32,7 @@ public class Bullet : MonoBehaviour
             //Skini health za damage
             if(reducehealth != null)
             {
-                reducehealth.health_Current -= damage;
+                reducehealth.TakeDamage(damage);
             }
             else
             {

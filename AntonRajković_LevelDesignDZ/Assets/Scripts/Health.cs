@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -8,24 +9,44 @@ public class Health : MonoBehaviour
     float health_Start;
     public float health_Current;
 
-    public float healthReg;
+    public Slider HealthSlider;
 
     private void Start()
     {
         health_Start = health;
         health_Current = health;
+        if(HealthSlider != null)
+        {
+            HealthSlider.maxValue = health_Start;
+        }
     }
 
     private void Update()
     {
-        if(health_Current < health_Start)
+        if(HealthSlider != null)
         {
-            health_Current += healthReg * Time.deltaTime;
+            HealthSlider.value = health_Current;
         }
-        if(health_Current <= 0)
+        if(health_Current <= 0f)
         {
-            Debug.Log("Game over motherfucker");
-            Application.Quit();
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Debug.Log(this.gameObject.name + "has died");
+        if(this.gameObject.tag == "Player")
+        {
+            //Send to the game over scene
+        }else if(this.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health_Current -= damage;
     }
 }
