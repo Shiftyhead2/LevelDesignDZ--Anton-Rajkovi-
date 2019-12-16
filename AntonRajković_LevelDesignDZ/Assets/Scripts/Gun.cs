@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour
     public float Recoil;
     public float reloadTime;
     float reloadTimeStart;
+    bool isReloading = false;
     public Camera aimScope;
     public float fireRateStart;
     float fireRate;
@@ -64,39 +65,34 @@ public class Gun : MonoBehaviour
         ammo.text = currentAmmo + "/" + maxAmmo;
         fireRate -= Time.deltaTime;
         reloadTime -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0)
+        if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
         {
-            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
-        else if (Input.GetMouseButton(0) && vrstaPucanja == 1 && currentAmmo > 0 && fireRate <= 0)
+        else if (Input.GetMouseButton(0) && vrstaPucanja == 1 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
         {
-            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
         //Burst fire
-        else if (Input.GetMouseButtonDown(0) && vrstaPucanja == 2 && currentAmmo > 0 && fireRate <= 0)
+        else if (Input.GetMouseButtonDown(0) && vrstaPucanja == 2 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
         {
-            MyAnim.SetTrigger("Fire");
             Pucaj();
             fireRate = fireRateStart;
         }
-        else if(Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reloadTime <= 0f)
+        else if(Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reloadTime <= 0f && isReloading == false)
         {
             MyAnim.SetTrigger("Reload");
-            reloadTime = reloadTimeStart;
-            currentAmmo = maxAmmo;
-            ammo.text = currentAmmo + "/" + maxAmmo; 
+            isReloading = true;
         }
-        else if (Input.GetMouseButton(1))
+        else if (Input.GetMouseButton(1) && isReloading == false)
         {
             aimScope.gameObject.SetActive(true);
             GameObject FPScamera = GameObject.Find("FirstPersonCharacter");
             FPScamera.GetComponent<Camera>().enabled = false;
             FPScamera.GetComponent<AudioListener>().enabled = false;
-        }else if (Input.GetMouseButtonUp(1))
+        }else if (Input.GetMouseButtonUp(1) || isReloading == true)
         {
             aimScope.gameObject.SetActive(false);
             GameObject FPScamera = GameObject.Find("FirstPersonCharacter");
@@ -143,7 +139,8 @@ public class Gun : MonoBehaviour
         }
         zvukPucanja.clip = shootSound;
         zvukPucanja.Play();
-        
+        MyAnim.SetTrigger("Fire");
+
 
     }
 
@@ -163,6 +160,10 @@ public class Gun : MonoBehaviour
     {
         zvukPucanja.clip = CockSound;
         zvukPucanja.Play();
+        reloadTime = reloadTimeStart;
+        currentAmmo = maxAmmo;
+        ammo.text = currentAmmo + "/" + maxAmmo;
+        isReloading = false;
     }
 
 }

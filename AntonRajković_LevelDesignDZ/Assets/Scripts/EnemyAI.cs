@@ -34,37 +34,40 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if(Target != null)
+        if (Target != null)
         {
-            
-            myAgent.SetDestination(Target.position);
-            if(Vector3.Distance(this.gameObject.transform.position, Target.position) > myAgent.stoppingDistance)
+            if (myAgent.enabled != false)
             {
-                myAnimator.SetBool("IsWalking",true);
-            }
-            else if(Vector3.Distance(this.gameObject.transform.position, Target.position) <= myAgent.stoppingDistance)
-            {
-                AttackTime -= Time.deltaTime;
-                myAnimator.SetBool("IsWalking", false);
-                if(AttackTime <= 0f)
+                myAgent.SetDestination(Target.position);
+
+                if (Vector3.Distance(this.gameObject.transform.position, Target.position) > myAgent.stoppingDistance)
                 {
-                    //Debug.Log("Attacking!");
-                    myAnimator.SetTrigger("Attack");
-                    healthScript.TakeDamage(Damage);
-                    AttackTime = AttackTimeStart;
-                    MyAudioSource.clip = ZombieAttack[Random.Range(0, ZombieAttack.Length)];
-                    MyAudioSource.Play();
+                    myAnimator.SetBool("IsWalking", true);
                 }
-            }
+                else if (Vector3.Distance(this.gameObject.transform.position, Target.position) <= myAgent.stoppingDistance)
+                {
+                    AttackTime -= Time.deltaTime;
+                    myAnimator.SetBool("IsWalking", false);
+                    if (AttackTime <= 0f)
+                    {
+                        //Debug.Log("Attacking!");
+                        myAnimator.SetTrigger("Attack");
+                        healthScript.TakeDamage(Damage);
+                        AttackTime = AttackTimeStart;
+                        MyAudioSource.clip = ZombieAttack[Random.Range(0, ZombieAttack.Length)];
+                        MyAudioSource.Play();
+                    }
+                }
 
-            AudioReset -= Time.deltaTime;
-            if(AudioReset <= 0f && !MyAudioSource.isPlaying)
-            {
-                MyAudioSource.clip = ZombieGroans[Random.Range(0, ZombieGroans.Length)];
-                MyAudioSource.Play();
-                AudioReset = AudioResetStart;
+                AudioReset -= Time.deltaTime;
+                if (AudioReset <= 0f && !MyAudioSource.isPlaying)
+                {
+                    MyAudioSource.clip = ZombieGroans[Random.Range(0, ZombieGroans.Length)];
+                    MyAudioSource.Play();
+                    AudioReset = AudioResetStart;
+                }
+               
             }
-
         }
         else
         {

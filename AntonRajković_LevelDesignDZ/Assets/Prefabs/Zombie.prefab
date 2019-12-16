@@ -982,7 +982,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 4.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1044,6 +1044,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a4366158371c9514cae30cfff454dcb2, type: 3}
   - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
   - {fileID: 8300000, guid: 5cd921b91deac4f47b05c451951f7a53, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: d108e9ae3908d4d479e1e41cca0188a3, type: 3}
+  - {fileID: 8300000, guid: e29d35a3561cf964e9c39f5b99c2696c, type: 3}
+  - {fileID: 8300000, guid: c35b1f489447c164f99deded2c2a9a6a, type: 3}
+  - {fileID: 8300000, guid: efc7bb9783bdf8a4797f4caae38bea34, type: 3}
   HealthSlider: {fileID: 1724427137699532046}
 --- !u!82 &5589162940105219151
 AudioSource:
@@ -1505,7 +1510,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1464957672442031750}
   m_HandleRect: {fileID: 0}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class Health : MonoBehaviour
     public float health_Current;
     public AudioSource MyAudioSource;
     public AudioClip[] HurtSounds;
+    public AudioClip[] DeathSounds;
 
     public Slider HealthSlider;
+    bool Died = false;
 
     private void Start()
     {
@@ -21,6 +24,11 @@ public class Health : MonoBehaviour
         {
             HealthSlider.maxValue = health_Start;
         }
+        if(this.gameObject.tag == "Enemy")
+        {
+            HealthSlider.gameObject.SetActive(false);
+        }
+        
     }
 
     private void Update()
@@ -31,29 +39,59 @@ public class Health : MonoBehaviour
         }
         if(health_Current <= 0f)
         {
-            Die();
+            if(Died == false)
+            {
+                Die();
+            }
         }
     }
 
     void Die()
     {
-        Debug.Log(this.gameObject.name + "has died");
+        if(MyAudioSource != null)
+        {
+            MyAudioSource.clip = DeathSounds[Random.Range(0, DeathSounds.Length)];
+            MyAudioSource.Play();
+        }
+
+        Debug.Log(this.gameObject.name + " has died");
         if(this.gameObject.tag == "Player")
         {
             //Send to the game over scene
         }else if(this.gameObject.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+            NavMeshAgent Agent = this.gameObject.GetComponent<NavMeshAgent>();
+            Animator Anim = this.gameObject.GetComponent<Animator>();
+            HealthSlider.gameObject.SetActive(false);
+            Agent.enabled = false;
+            Anim.SetTrigger("IsDead");
         }
+        Died = true;
     }
 
     public void TakeDamage(float damage)
     {
-        health_Current -= damage;
-        if (MyAudioSource != null)
+        if (Died == false)
         {
-            MyAudioSource.clip = HurtSounds[Random.Range(0, HurtSounds.Length)];
-            MyAudioSource.Play();
+            if (this.gameObject.tag == "Enemy")
+            {
+                HealthSlider.gameObject.SetActive(true);
+            }
+            health_Current -= damage;
+            if (MyAudioSource != null)
+            {
+                MyAudioSource.clip = HurtSounds[Random.Range(0, HurtSounds.Length)];
+                MyAudioSource.Play();
+            }
         }
+        else
+        {
+            Debug.LogWarning("What the fuck " + this.gameObject.name + " you are dead! You cannot take damage!");
+        }
+    }
+
+    void Destroy()
+    {
+        Destroy(this.gameObject);
     }
 }
