@@ -1004,6 +1004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   AttackTimeStart: 2
+  RunDistance: 25
+  WalkSpeed: 3
+  RunSpeed: 5.5
   Damage: 10
   AudioResetStart: 5
   ZombieGroans:
@@ -1037,6 +1040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   health_Current: 0
+  ScoreToGive: 50
   MyAudioSource: {fileID: 5589162940105219151}
   HurtSounds:
   - {fileID: 8300000, guid: bdb798b20d5ac2f438f3a562f4150019, type: 3}

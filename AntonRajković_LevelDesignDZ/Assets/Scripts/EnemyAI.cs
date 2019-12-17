@@ -5,14 +5,22 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    
     NavMeshAgent myAgent;
     Animator myAnimator;
+    [Header("Enemy Info")]
     public Transform Target;
     public float AttackTimeStart;
     float AttackTime;
+    public float RunDistance;
+    public float WalkSpeed;
+    public float RunSpeed;
     Health healthScript;
     public float Damage;
+
+    
     AudioSource MyAudioSource;
+    [Header("Enemy Audio")]
     public float AudioResetStart;
     float AudioReset;
     public AudioClip[] ZombieGroans;
@@ -30,6 +38,7 @@ public class EnemyAI : MonoBehaviour
         }
         AttackTime = AttackTimeStart;
         AudioReset = AudioResetStart;
+        myAgent.speed = WalkSpeed;
     }
 
     private void Update()
@@ -57,6 +66,15 @@ public class EnemyAI : MonoBehaviour
                         MyAudioSource.clip = ZombieAttack[Random.Range(0, ZombieAttack.Length)];
                         MyAudioSource.Play();
                     }
+                }
+
+                if(Vector3.Distance(this.gameObject.transform.position, Target.position) <= RunDistance)
+                {
+                    myAgent.speed = RunSpeed;
+                }
+                else
+                {
+                    myAgent.speed = WalkSpeed;
                 }
 
                 AudioReset -= Time.deltaTime;

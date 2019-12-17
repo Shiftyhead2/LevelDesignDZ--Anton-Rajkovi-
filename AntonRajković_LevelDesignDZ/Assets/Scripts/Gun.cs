@@ -14,8 +14,8 @@ public class Gun : MonoBehaviour
     public Transform bulletSpawnPoint;
     public float BulletDamage;
     Bullet bulletScript;
-    [Header("Audio:")]
     AudioSource zvukPucanja;
+    [Header("Audio:")]
     public AudioClip shootSound;
     public AudioClip MagazineExit;
     public AudioClip MagazineEnter;

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Enemy Count")]
     public int Count;
+    [Header("Enemy prefabs")]
     public GameObject[] Enemies;
+    [Header("Spawnpoints")]
     public Transform[] SpawnPoints;
 
     private void Start()

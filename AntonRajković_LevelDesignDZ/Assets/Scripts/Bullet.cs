@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     //Univerzalna bullet skripta
     Rigidbody RB;
+    [Header("Varijables")]
     public float speed;
     public float damage;
     float DestroyTime = 30f;

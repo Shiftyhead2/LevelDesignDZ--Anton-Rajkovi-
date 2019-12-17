@@ -6,18 +6,25 @@ using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
+    [Header("Health Variables:")]
     public float health;
     float health_Start;
     public float health_Current;
+    public int ScoreToGive;
+
+    [Header("Health Audio:")]
     public AudioSource MyAudioSource;
     public AudioClip[] HurtSounds;
     public AudioClip[] DeathSounds;
+    GameManager gm;
 
+    [Header("UI:")]
     public Slider HealthSlider;
     bool Died = false;
 
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         health_Start = health;
         health_Current = health;
         if(HealthSlider != null)
@@ -65,6 +72,7 @@ public class Health : MonoBehaviour
             HealthSlider.gameObject.SetActive(false);
             Agent.enabled = false;
             Anim.SetTrigger("IsDead");
+            gm.UpdateScore(ScoreToGive);
         }
         Died = true;
     }
