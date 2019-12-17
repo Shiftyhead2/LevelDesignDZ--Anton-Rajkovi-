@@ -13812,6 +13812,8 @@ MonoBehaviour:
   Count: 10
   Enemies:
   - {fileID: 1531053378604624518, guid: 091a390c5b2178f4f9ce1ecde310540c, type: 3}
+  - {fileID: 6584794981427297227, guid: 3b0554a5c8bd4e44f9281187cb237504, type: 3}
+  - {fileID: 8254471346110662211, guid: ca4c3864f332f3f4782aed88160612c9, type: 3}
   SpawnPoints:
   - {fileID: 1809199450}
   - {fileID: 263057435}
