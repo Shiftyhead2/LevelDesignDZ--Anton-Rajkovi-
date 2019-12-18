@@ -33,12 +33,10 @@ public class Bullet : MonoBehaviour
             //Skini health za damage
             if(reducehealth != null)
             {
-                reducehealth.TakeDamage(damage);
+              reducehealth.TakeDamage(damage);
             }
-            else
-            {
-
-            }
+            
+           
             Destroy(this.gameObject);
         }
     }

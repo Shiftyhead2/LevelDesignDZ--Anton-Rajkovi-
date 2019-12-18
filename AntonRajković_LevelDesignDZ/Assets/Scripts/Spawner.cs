@@ -23,7 +23,6 @@ public class Spawner : MonoBehaviour
             int RandomEnemy = Random.Range(0, Enemies.Length);
             int RandomSpawn = Random.Range(0, SpawnPoints.Length);
             GameObject Enemy = Instantiate(Enemies[RandomEnemy], SpawnPoints[RandomSpawn].position, SpawnPoints[RandomSpawn].rotation) as GameObject;
-            Enemy.name = "Zombie";
             //Debug.Log("Spawned this enemy " + Enemy.name + " at this spawnpoint " + SpawnPoints[RandomSpawn].name);
         }
     }

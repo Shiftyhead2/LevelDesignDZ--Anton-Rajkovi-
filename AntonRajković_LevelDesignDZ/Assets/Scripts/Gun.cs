@@ -160,10 +160,19 @@ public class Gun : MonoBehaviour
     {
         zvukPucanja.clip = CockSound;
         zvukPucanja.Play();
+    }
+
+    void DoneReloading()
+    {
         reloadTime = reloadTimeStart;
         currentAmmo = maxAmmo;
         ammo.text = currentAmmo + "/" + maxAmmo;
         isReloading = false;
+    }
+
+    public bool CheckIfReloading()
+    {
+        return isReloading;
     }
 
 }

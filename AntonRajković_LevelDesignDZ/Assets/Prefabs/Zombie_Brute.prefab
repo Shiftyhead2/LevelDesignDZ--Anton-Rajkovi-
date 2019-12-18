@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 6587553136898034749}
   m_Layer: 0
   m_Name: basic_rig Head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -970,9 +970,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
-  m_Height: 1.18
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &6585694011633282470
 NavMeshAgent:
   m_ObjectHideFlags: 0

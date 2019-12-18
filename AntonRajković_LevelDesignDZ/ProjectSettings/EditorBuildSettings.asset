@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6b473e3a9a08171438630de66658be46
+  - enabled: 1
+    path: Assets/Scenes/DesertTown.unity
+    guid: 999ada59c3bae66439230ac614a718f5
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 77941374b50d7d4459ba327eae6a3d51
   m_configObjects: {}

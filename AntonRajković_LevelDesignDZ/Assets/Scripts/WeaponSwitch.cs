@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponSwitch : MonoBehaviour
 {
     public int selectedWeapon = 0;
+    Gun GunScript;
+    bool CanSwitch;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +17,13 @@ public class WeaponSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GunScript != null)
+        {
+            CanSwitch = !GunScript.CheckIfReloading();
+        }
+
         int previousWeapon = selectedWeapon;
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f && CanSwitch)
         {
             if(selectedWeapon >= transform.childCount - 1)
             {
@@ -26,7 +33,7 @@ public class WeaponSwitch : MonoBehaviour
             {
                 selectedWeapon++;
             }
-        }else if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+        }else if(Input.GetAxis("Mouse ScrollWheel") < 0f && CanSwitch)
         {
             if (selectedWeapon <= 0)
             {
@@ -52,6 +59,7 @@ public class WeaponSwitch : MonoBehaviour
             if(i == selectedWeapon)
             {
                 weapons.gameObject.SetActive(true);
+                GunScript = weapons.gameObject.GetComponent<Gun>();
             }
             else
             {

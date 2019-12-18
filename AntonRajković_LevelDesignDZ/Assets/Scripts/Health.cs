@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -65,6 +66,7 @@ public class Health : MonoBehaviour
         if(this.gameObject.tag == "Player")
         {
             //Send to the game over scene
+            SceneManager.LoadScene(2);
         }else if(this.gameObject.tag == "Enemy")
         {
             NavMeshAgent Agent = this.gameObject.GetComponent<NavMeshAgent>();
@@ -97,6 +99,7 @@ public class Health : MonoBehaviour
             Debug.LogWarning("What the fuck " + this.gameObject.name + " you are dead! You cannot take damage!");
         }
     }
+  
 
     void Destroy()
     {
