@@ -62,7 +62,7 @@ public class Health : MonoBehaviour
             MyAudioSource.Play();
         }
 
-        Debug.Log(this.gameObject.name + " has died");
+        //Debug.Log(this.gameObject.name + " has died");
         if(this.gameObject.tag == "Player")
         {
             //Send to the game over scene
@@ -96,7 +96,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("What the fuck " + this.gameObject.name + " you are dead! You cannot take damage!");
+            //Debug.LogWarning("What the fuck " + this.gameObject.name + " you are dead! You cannot take damage!");
         }
     }
   

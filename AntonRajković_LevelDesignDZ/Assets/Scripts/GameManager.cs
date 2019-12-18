@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         TimeLeft -= Time.deltaTime;
-        TimeLeftText.text = string.Format("{0:00}", TimeLeft);
+        TimeLeftText.text = "Time left: " + string.Format("{0:00}", TimeLeft);
     }
 
  public void UpdateScore(int givenScore)

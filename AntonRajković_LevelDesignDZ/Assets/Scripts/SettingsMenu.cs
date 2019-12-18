@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class SettingsMenu : MonoBehaviour
 {
     Resolution[] resolutions;
     public Dropdown ResolutionDropDown;
+    public AudioMixer EnemyAudioMixer;
+    public Text VolumeText;
+    public Slider VolumeSlider;
+
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -26,9 +31,17 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
+        VolumeText.text = VolumeSlider.maxValue + " dB";
+
         ResolutionDropDown.AddOptions(options);
         ResolutionDropDown.value = currentResolutionIndex;
         ResolutionDropDown.RefreshShownValue();
+    }
+
+    public void SetVolume(float volume)
+    {
+        EnemyAudioMixer.SetFloat("Volume", volume);
+        VolumeText.text = string.Format("{0:00}", volume) + " dB";
     }
 
     public void SetResolution(int ResolutionIndex)

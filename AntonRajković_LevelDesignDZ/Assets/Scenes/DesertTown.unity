@@ -678,10 +678,10 @@ MonoBehaviour:
   bullet: {fileID: 8222788469565335212, guid: 3aaa1e297864c6d40bfdf7f358dc4296, type: 3}
   bulletSpawnPoint: {fileID: 1783523507}
   BulletDamage: 35
-  shootSound: {fileID: 8300000, guid: ce51cbc09dbf6ae4e8c298a8fb56a4a8, type: 3}
-  MagazineExit: {fileID: 8300000, guid: f554dd113083c6444bf45b915fd3ad30, type: 3}
-  MagazineEnter: {fileID: 8300000, guid: bf35603eddf8d0f4bad5fe94ee37349e, type: 3}
-  CockSound: {fileID: 8300000, guid: ee7b591267ab48f4d97206f880b5eaa7, type: 3}
+  shootSound: {fileID: 8300000, guid: ea613eb67a7e0044e80a0bd6243aebb4, type: 3}
+  MagazineExit: {fileID: 8300000, guid: e053825e6a54cd34fbcf9cd086ed8c9f, type: 3}
+  MagazineEnter: {fileID: 8300000, guid: 771c5c03d64583e4096ed9c57bbaceaf, type: 3}
+  CockSound: {fileID: 8300000, guid: b84557bb5adcea843816013f517103fb, type: 3}
   Recoil: 0
   reloadTime: 2.9
   aimScope: {fileID: 965793206}
@@ -700,7 +700,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ea613eb67a7e0044e80a0bd6243aebb4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14782,7 +14782,7 @@ MonoBehaviour:
   bullet: {fileID: 8222788469565335212, guid: 3aaa1e297864c6d40bfdf7f358dc4296, type: 3}
   bulletSpawnPoint: {fileID: 1386243337}
   BulletDamage: 20
-  shootSound: {fileID: 8300000, guid: ce51cbc09dbf6ae4e8c298a8fb56a4a8, type: 3}
+  shootSound: {fileID: 8300000, guid: 79cfbb6f53a98994f910ef35906f50cd, type: 3}
   MagazineExit: {fileID: 8300000, guid: f554dd113083c6444bf45b915fd3ad30, type: 3}
   MagazineEnter: {fileID: 8300000, guid: bf35603eddf8d0f4bad5fe94ee37349e, type: 3}
   CockSound: {fileID: 8300000, guid: ee7b591267ab48f4d97206f880b5eaa7, type: 3}

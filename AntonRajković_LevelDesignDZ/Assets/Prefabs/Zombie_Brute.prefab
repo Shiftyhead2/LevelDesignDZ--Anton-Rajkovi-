@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 6585694011633282470}
   - component: {fileID: 5647092589646937548}
   - component: {fileID: 7668107515282247072}
-  - component: {fileID: 274212558895025410}
+  - component: {fileID: 610396825}
   m_Layer: 0
   m_Name: Zombie_Brute
   m_TagString: Enemy
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   health: 250
   health_Current: 0
   ScoreToGive: 500
-  MyAudioSource: {fileID: 274212558895025410}
+  MyAudioSource: {fileID: 610396825}
   HurtSounds:
   - {fileID: 8300000, guid: bdb798b20d5ac2f438f3a562f4150019, type: 3}
   - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c35b1f489447c164f99deded2c2a9a6a, type: 3}
   - {fileID: 8300000, guid: efc7bb9783bdf8a4797f4caae38bea34, type: 3}
   HealthSlider: {fileID: 6462917881155001411}
---- !u!82 &274212558895025410
+--- !u!82 &610396825
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1068,11 +1068,12 @@ AudioSource:
   m_GameObject: {fileID: 6584794981427297227}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8aa2bccec0ba5424b9a96f78040cbd8b,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: -1
+  m_Pitch: 0.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -1080,7 +1081,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 100
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -1115,7 +1116,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

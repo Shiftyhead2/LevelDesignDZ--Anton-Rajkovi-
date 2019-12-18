@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
             healthScript = Target.GetComponent<Health>();
         }
         AttackTime = AttackTimeStart;
+        AudioResetStart = Random.Range(5, 25);
         AudioReset = AudioResetStart;
         myAgent.speed = WalkSpeed;
     }
@@ -63,6 +64,8 @@ public class EnemyAI : MonoBehaviour
                         myAnimator.SetTrigger("Attack");
                         healthScript.TakeDamage(Damage);
                         AttackTime = AttackTimeStart;
+                        AudioResetStart = Random.Range(5, 25);
+                        AudioReset = AudioResetStart;
                         MyAudioSource.clip = ZombieAttack[Random.Range(0, ZombieAttack.Length)];
                         MyAudioSource.Play();
                     }
@@ -82,6 +85,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     MyAudioSource.clip = ZombieGroans[Random.Range(0, ZombieGroans.Length)];
                     MyAudioSource.Play();
+                    AudioResetStart = Random.Range(5, 25);
                     AudioReset = AudioResetStart;
                 }
                
