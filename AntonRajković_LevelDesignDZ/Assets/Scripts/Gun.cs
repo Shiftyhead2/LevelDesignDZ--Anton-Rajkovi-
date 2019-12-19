@@ -118,22 +118,23 @@ public class Gun : MonoBehaviour
                 currentAmmo--;
                 for (int i = 0; i < 3; i++)
                 {
+                    bulletScript.damage = BulletDamage;
                     cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                     cloneBullet.velocity = bulletScript.speed * ray.direction;
-                    bulletScript.damage = BulletDamage;
+                    
                 }
                 break;
             case 1:
                 currentAmmo--;
+                bulletScript.damage = BulletDamage;
                 cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 cloneBullet.velocity = bulletScript.speed * ray.direction;
-                bulletScript.damage = BulletDamage;
                 break;
             default:
                 currentAmmo--;
+                bulletScript.damage = BulletDamage;
                 cloneBullet = Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 cloneBullet.velocity = bulletScript.speed * ray.direction;
-                bulletScript.damage = BulletDamage;
                 break;
 
         }
