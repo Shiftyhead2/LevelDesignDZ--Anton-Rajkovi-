@@ -177,12 +177,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 3a85c9a9d2e2a8c42b0bd4ed9a2d34e7, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 30
+    m_MinSize: 2
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -872,12 +872,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 3a85c9a9d2e2a8c42b0bd4ed9a2d34e7, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 30
+    m_MinSize: 2
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -8079,12 +8079,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 3a85c9a9d2e2a8c42b0bd4ed9a2d34e7, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 30
+    m_MinSize: 2
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -8417,10 +8417,10 @@ MonoBehaviour:
   bullet: {fileID: 8222788469565335212, guid: 369cc5fe1ed75bc47b8f85d4072beb21, type: 3}
   bulletSpawnPoint: {fileID: 424068801}
   BulletDamage: 100
-  shootSound: {fileID: 0}
-  MagazineExit: {fileID: 0}
-  MagazineEnter: {fileID: 0}
-  CockSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 0959a1bb9e674ba48b08aa0f3d66d84b, type: 3}
+  MagazineExit: {fileID: 8300000, guid: f554dd113083c6444bf45b915fd3ad30, type: 3}
+  MagazineEnter: {fileID: 8300000, guid: bf35603eddf8d0f4bad5fe94ee37349e, type: 3}
+  CockSound: {fileID: 8300000, guid: b84557bb5adcea843816013f517103fb, type: 3}
   Recoil: 0
   reloadTime: 4
   aimScope: {fileID: 965793206}
@@ -11767,8 +11767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 147.36, y: 34.54}
-  m_SizeDelta: {x: 294.73, y: 69.09}
+  m_AnchoredPosition: {x: 162.86, y: 38.97}
+  m_SizeDelta: {x: 325.73, y: 77.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752328227
 MonoBehaviour:
@@ -11789,12 +11789,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 3a85c9a9d2e2a8c42b0bd4ed9a2d34e7, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 30
+    m_MinSize: 2
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
