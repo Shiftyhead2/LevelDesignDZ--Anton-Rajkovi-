@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class GameManager : MonoBehaviour
     {
         TimeLeft -= Time.deltaTime;
         TimeLeftText.text = "Time left: " + string.Format("{0:00}", TimeLeft);
+
+        if(TimeLeft <= 0f &&  Kills < SpawnerScript.Count)
+        {
+            GameOver();
+        }else if(TimeLeft >= 0f && Kills == SpawnerScript.Count)
+        {
+            GameWin();
+        }
+
     }
 
  public void UpdateScore(int givenScore)
@@ -37,4 +47,15 @@ public class GameManager : MonoBehaviour
         ScoreText.text = "Score: " + Score;
         KillsLeftText.text = "Kills: " + Kills + "/" + SpawnerScript.Count;
     }
+
+    void GameOver()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    void GameWin()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 }
