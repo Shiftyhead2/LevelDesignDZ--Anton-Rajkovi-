@@ -65,34 +65,34 @@ public class Gun : MonoBehaviour
         ammo.text = currentAmmo + "/" + maxAmmo;
         fireRate -= Time.deltaTime;
         reloadTime -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
+        if (Input.GetMouseButtonDown(0) && vrstaPucanja == 0 && currentAmmo > 0 && fireRate <= 0 && isReloading == false && PauseManager.GamePaused == false)
         {
             Pucaj();
             fireRate = fireRateStart;
         }
-        else if (Input.GetMouseButton(0) && vrstaPucanja == 1 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
+        else if (Input.GetMouseButton(0) && vrstaPucanja == 1 && currentAmmo > 0 && fireRate <= 0 && isReloading == false && PauseManager.GamePaused == false)
         {
             Pucaj();
             fireRate = fireRateStart;
         }
         //Burst fire
-        else if (Input.GetMouseButtonDown(0) && vrstaPucanja == 2 && currentAmmo > 0 && fireRate <= 0 && isReloading == false)
+        else if (Input.GetMouseButtonDown(0) && vrstaPucanja == 2 && currentAmmo > 0 && fireRate <= 0 && isReloading == false && PauseManager.GamePaused == false)
         {
             Pucaj();
             fireRate = fireRateStart;
         }
-        else if(Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reloadTime <= 0f && isReloading == false)
+        else if(Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && reloadTime <= 0f && isReloading == false && PauseManager.GamePaused == false)
         {
             MyAnim.SetTrigger("Reload");
             isReloading = true;
         }
-        else if (Input.GetMouseButton(1) && isReloading == false)
+        else if (Input.GetMouseButton(1) && isReloading == false && PauseManager.GamePaused == false)
         {
             aimScope.gameObject.SetActive(true);
             GameObject FPScamera = GameObject.Find("FirstPersonCharacter");
             FPScamera.GetComponent<Camera>().enabled = false;
             FPScamera.GetComponent<AudioListener>().enabled = false;
-        }else if (Input.GetMouseButtonUp(1) || isReloading == true)
+        }else if (Input.GetMouseButtonUp(1) || isReloading == true || PauseManager.GamePaused == true)
         {
             aimScope.gameObject.SetActive(false);
             GameObject FPScamera = GameObject.Find("FirstPersonCharacter");

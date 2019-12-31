@@ -44,6 +44,16 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.GamePaused)
+        {
+            MyAudioSource.Pause();
+        }
+        else
+        {
+            MyAudioSource.UnPause();
+        }
+
+
         if (Target != null)
         {
             if (myAgent.enabled != false)
@@ -93,7 +103,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("There is nothing for me to chase. What do I do? I guess I will just stand here.");
+            //Debug.LogWarning("There is nothing for me to chase. What do I do? I guess I will just stand here.");
             myAnimator.SetBool("IsWalking", false);
         }
     }

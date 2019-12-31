@@ -41,6 +41,22 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.GamePaused)
+        {
+            if(MyAudioSource != null)
+            {
+                MyAudioSource.Pause();
+            }
+
+        }
+        else
+        {
+            if (MyAudioSource != null)
+            {
+                MyAudioSource.UnPause();
+            }
+        }
+
         if(HealthSlider != null)
         {
             HealthSlider.value = health_Current;
@@ -88,7 +104,7 @@ public class Health : MonoBehaviour
                 HealthSlider.gameObject.SetActive(true);
             }
             health_Current -= damage;
-            if (MyAudioSource != null)
+            if (MyAudioSource != null && !MyAudioSource.isPlaying)
             {
                 MyAudioSource.clip = HurtSounds[Random.Range(0, HurtSounds.Length)];
                 MyAudioSource.Play();

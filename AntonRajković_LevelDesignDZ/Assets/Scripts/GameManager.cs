@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("UI")]
-    public Text ScoreText;
     public Text TimeLeftText;
     public Text KillsLeftText;
     [Header("Varijables")]
     public float TimeLeft;
+    float TimeLeftSeconds = 60f;
+    float TimeLeftMinutes;
     Spawner SpawnerScript;
     public int Kills;
     public int Score = 0;
@@ -19,24 +20,36 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnerScript = GetComponent<Spawner>();
-        TimeLeft = SpawnerScript.Count * 60f;
-        ScoreText.text = "Score: " + Score;
+        TimeLeft = SpawnerScript.Count * TimeLeftSeconds;
+        TimeLeftMinutes = TimeLeft / 60f;
         KillsLeftText.text = "Kills: " + Kills + "/" + SpawnerScript.Count;
         
     }
 
     private void Update()
     {
-        TimeLeft -= Time.deltaTime;
-        TimeLeftText.text = "Time left: " + string.Format("{0:00}", TimeLeft);
+        TimeLeftSeconds -= Time.deltaTime;
 
-        if(TimeLeft <= 0f &&  Kills < SpawnerScript.Count)
+        if (TimeLeftMinutes <= 0f && Kills < SpawnerScript.Count)
         {
             GameOver();
-        }else if(TimeLeft >= 0f && Kills == SpawnerScript.Count)
+        }
+        else if (TimeLeftMinutes >= 0f && Kills == SpawnerScript.Count)
         {
             GameWin();
         }
+
+
+        
+        if(TimeLeftSeconds <= 0f)
+        {
+            TimeLeftMinutes--;
+            TimeLeftSeconds = 60f;
+        }
+
+        TimeLeftText.text = "Time left: " + string.Format("{0:0}", TimeLeftMinutes) + ":" + string.Format("{0:0}", TimeLeftSeconds);
+
+        
 
     }
 
@@ -44,7 +57,6 @@ public class GameManager : MonoBehaviour
     {
         Kills++;
         Score += givenScore;
-        ScoreText.text = "Score: " + Score;
         KillsLeftText.text = "Kills: " + Kills + "/" + SpawnerScript.Count;
     }
 
